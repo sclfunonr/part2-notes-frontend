@@ -1,18 +1,20 @@
 import axios from 'axios'
-const baseUrl = '/api/notes'
+
+
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 const getAll = () => {
-  const request = axios.get(baseUrl)
+  const request = axios.get(`${API_URL}/api/notes`)
   return request.then((response) => response.data)
 }
 
 const create = (newObject) => {
-  const request = axios.post(baseUrl, newObject)
+  const request = axios.post(`${API_URL}/api/notes`, newObject)
   return request.then((response) => response.data)
 }
 
 const update = (id, newObject) => {
-  const request = axios.put(`${baseUrl}/${id}`, newObject)
+  const request = axios.put(`${`${API_URL}/api/notes`}/${id}`, newObject)
   return request.then((response) => response.data)
 }
 
